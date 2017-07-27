@@ -1,0 +1,18 @@
+<div id="stats_now_labels" class="panel panel-default">
+    <div class="panel-body">
+        <button type="button" class="btn btn-primary">Lat: <span class="badge">{{vm.stats.lat}}</span></button>
+        <button type="button" class="btn btn-primary">Lon: <span class="badge">{{vm.stats.lon}}</span></button>
+        <button type="button" class="btn btn-success">Satellites: <span class="badge">{{vm.stats.satellites}}</span></button>
+        <button type="button" class="btn btn-success">Speed: <span class="badge">{{vm.stats.speed}}</span></button>
+        <button type="button" class="btn btn-danger">Battery Level: <span class="badge">{{vm.stats.bat_level}}</span></button>
+        <button type="button" class="btn btn-danger">Charging: <span class="badge">{{vm.stats.is_charging}}</span></button>
+    </div>
+</div>
+
+<div id="map_canvas">
+    <ng-map id="actual_map" zoom="{{vm.map.zoom}}" center="{{vm.map.center.latitude}}, {{vm.map.center.longitude}}">
+        <marker position="{{vm.map.center.latitude}}, {{vm.map.center.longitude}}"
+                icon="{{vm.map.icon}}">
+        </marker>
+    </ng-map>
+</div>

@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 text-center">
+            <form name="loginForm" ng-submit="vm.login(loginForm.$valid, vm.login_credentails)" novalidate>
+                <input
+                        ng-model="vm.login_credentails.username"
+                        ng-required="true"
+                        type="text"
+                        name="email"/>
+
+
+                <input
+                        ng-model="vm.login_credentails.password"
+                        ng-required="true"
+                        type="password"
+                        label="{{ 'PASSWORD' | translate }}"
+                        name="password"/>
+
+
+                <div class="form-error" ng-class="{'fade-in': vm.error_message}" ng-bind="vm.error_message">
+
+                </div>
+
+                <button class="auth-btn" ng-class="{disabled: vm.loading}">
+                    <span ng-if="!vm.loading">{{ 'LOGIN' | translate }}</span>
+                    <span ng-if="vm.loading">{{ 'LOADING' | translate }}</span>
+                </button>
+
+                <div class="forgot-password">
+                    <a ng-click="vm.openForgotPassword()">{{ 'FORGOT_PASSWORD' | translate }}</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

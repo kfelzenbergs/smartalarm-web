@@ -1,0 +1,62 @@
+@import "../../bower_components/bootstrap/less/bootstrap.less";
+
+@icon-font-path: "/assets/fonts/glyphicons_halflings/";
+
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+}
+
+#switchable_view, #actual_map {
+  height: 100%;
+}
+
+#stats_bar {
+  height: 40px;
+}
+
+#stats_now_labels {
+  margin:0px;
+  padding-top:10px;
+  border-radius:0px;
+}
+
+#past_view_top_container {
+  margin:0px;
+  padding-top:10px;
+  border-radius:0px;
+}
+
+#map_canvas {
+  position: relative;
+  height:~'calc(100% - 117px)';
+}
+
+.angular-google-map-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+#reportrange {
+  width: 350px !important;
+}
+
+.past_view_main_container {
+  width: 100%;
+  height: 100%;
+}
+
+#historical_map {
+  width: 77%;
+  height: ~'calc(100% - 114px)';
+  float: left;
+}
+
+#stats_side_panel {
+  width: 23%;
+  float: right;
+}

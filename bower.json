@@ -1,0 +1,37 @@
+{
+  "name": "test48",
+  "description": "Get your mobile Android or iOS app tested in 48 hours",
+  "main": "",
+  "keywords": [
+    "test48",
+    "test",
+    "android",
+    "ios"
+  ],
+  "authors": [
+    "TestDevLab"
+  ],
+  "license": "",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.8",
+    "restangular": "^1.5.2",
+    "angular-translate": "^2.12.1",
+    "angular-ui-router": "^0.3.1",
+    "bootstrap": "^3.3.7",
+    "angular-cookies": "^1.5.8",
+    "moment": "^2.17.1",
+    "bootstrap-daterangepicker": "*",
+    "ngmap" : "1.17.8",
+    "animate.css": "^3.5.2",
+    "jquery": "^2.2.4"
+  }
+}

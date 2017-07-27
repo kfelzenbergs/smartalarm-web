@@ -1,0 +1,35 @@
+{
+  "name": "test48",
+  "description": "Get your mobile Android or iOS app tested in 48 hours",
+  "keywords": [
+    "test48",
+    "test",
+    "android",
+    "ios"
+  ],
+  "main": "",
+  "dependencies": {
+    "browser-sync": "^2.12.8",
+    "browser-sync-spa": "^1.0.3",
+    "clone": "^1.0.2",
+    "dateformat": "^1.0.12",
+    "del": "^2.2.0",
+    "gulp": "^3.9.1",
+    "gulp-bower": "^0.0.13",
+    "gulp-clean-css": "^2.0.11",
+    "gulp-concat": "^2.6.0",
+    "gulp-file": "^0.3.0",
+    "gulp-html2js": "^0.4.2",
+    "gulp-inject": "^4.1.0",
+    "gulp-less": "^3.1.0",
+    "gulp-ng-annotate": "^2.0.0",
+    "gulp-uglify": "^1.5.4",
+    "gulp-watch": "^4.3.6",
+    "run-sequence": "^1.2.1",
+    "stream-combiner2": "^1.1.1"
+  },
+  "devDependencies": {},
+  "author": "TestDevLab",
+  "license": "",
+  "repository": "git@gitlab.tdlbox.com:root/test48-web.git"
+}
