@@ -9,6 +9,12 @@
     </div>
 </div>
 
+<div class="panel-body">
+    <span ng-repeat="n in vm.trackers track by $index">
+            <button ng-click="vm.setTracker(n.identity)" type="button" class="btn btn-info">@<span class="badge">{{n.name}}</span></button>
+    </span>
+</div>
+
 <div id="map_canvas">
     <ng-map id="actual_map" zoom="{{vm.map.zoom}}" center="{{vm.map.center.latitude}}, {{vm.map.center.longitude}}">
         <marker position="{{vm.map.center.latitude}}, {{vm.map.center.longitude}}"

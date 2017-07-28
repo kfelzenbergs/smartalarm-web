@@ -14,6 +14,10 @@ trackerOwlsApp.controller('UserHomeCtrl', function (Rest, Auth, User, NgMap) {
     fetch();
   }, 10000);
 
+  vm.setTracker = function(identity) {
+    vm.tracker = identity;
+    fetch();
+  };
 
   function fetch(){
     Rest.getStatsGateway(vm.tracker).then(function(response){
@@ -40,6 +44,7 @@ trackerOwlsApp.controller('UserHomeCtrl', function (Rest, Auth, User, NgMap) {
 
   (function init() {
     Rest.getTrackers().then(function(response){
+      vm.trackers = response;
       vm.tracker = response[0].identity;
       fetch();
     })
