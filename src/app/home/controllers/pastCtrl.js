@@ -1,4 +1,4 @@
-test48App.controller('pastCtrl', function (Rest, Auth, User, NgMap) {
+trackerOwlsApp.controller('pastCtrl', function (Rest, Auth, User, NgMap) {
   var vm = this;
 
   function initMap() {

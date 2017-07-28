@@ -1,15 +1,15 @@
 {
-  "name": "test48",
-  "description": "Get your mobile Android or iOS app tested in 48 hours",
+  "name": "trackerOwls",
+  "description": "Use our Owls to track your Assets!",
   "main": "",
   "keywords": [
-    "test48",
-    "test",
-    "android",
-    "ios"
+    "track",
+    "tracker",
+    "gps",
+    "alarm"
   ],
   "authors": [
-    "TestDevLab"
+    "Kristaps Felzenbergs"
   ],
   "license": "",
   "homepage": "",

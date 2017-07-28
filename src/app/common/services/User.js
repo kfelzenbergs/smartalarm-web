@@ -1,4 +1,4 @@
-test48App.service('User',function(){
+trackerOwlsApp.service('User',function(){
   this.data = null;
 
   this.setData = function (user) {

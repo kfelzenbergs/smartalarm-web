@@ -1,4 +1,4 @@
-test48App.factory('Config', function ($rootScope) {
+trackerOwlsApp.factory('Config', function ($rootScope) {
     var Config = {};
 
     /**

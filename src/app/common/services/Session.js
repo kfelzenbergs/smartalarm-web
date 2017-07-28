@@ -1,4 +1,4 @@
-test48App.service('Session', function ($cookies) {
+trackerOwlsApp.service('Session', function ($cookies) {
     this.access_token = $cookies.get('access_token') || null;
 
     /**

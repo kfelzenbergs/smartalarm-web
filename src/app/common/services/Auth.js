@@ -1,4 +1,4 @@
-test48App.factory('Auth', function (Session, User) {
+trackerOwlsApp.factory('Auth', function (Session, User) {
     var Auth = {};
 
     /**

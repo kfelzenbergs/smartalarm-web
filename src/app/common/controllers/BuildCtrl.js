@@ -1,4 +1,4 @@
-test48App.controller('BuildCtrl', function (Config) {
+trackerOwlsApp.controller('BuildCtrl', function (Config) {
     var vm = this;
 
     /**

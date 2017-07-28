@@ -1,4 +1,4 @@
-test48App.factory('Fetcher', function (Auth, Rest) {
+trackerOwlsApp.factory('Fetcher', function (Auth, Rest) {
   var Fetcher = {};
 
   /**

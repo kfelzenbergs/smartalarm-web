@@ -1,11 +1,11 @@
 {
-  "name": "test48",
-  "description": "Get your mobile Android or iOS app tested in 48 hours",
+  "name": "trackerOwls",
+  "description": "Use our Owls to track your Assets!",
   "keywords": [
-    "test48",
-    "test",
-    "android",
-    "ios"
+    "track",
+    "tracker",
+    "gps",
+    "alarm"
   ],
   "main": "",
   "dependencies": {
@@ -29,7 +29,7 @@
     "stream-combiner2": "^1.1.1"
   },
   "devDependencies": {},
-  "author": "TestDevLab",
+  "author": "Kristaps Felzenbergs",
   "license": "",
-  "repository": "git@gitlab.tdlbox.com:root/test48-web.git"
+  "repository": "git@bitbucket.org:trackerowls/smartalarm-web.git"
 }

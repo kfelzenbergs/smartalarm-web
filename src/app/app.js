@@ -1,4 +1,4 @@
-var test48App = angular.module('test48App', [
+var trackerOwlsApp = angular.module('trackerOwlsApp', [
     'ngCookies',
     'restangular',
     'pascalprecht.translate',
@@ -7,7 +7,7 @@ var test48App = angular.module('test48App', [
   'ngMap'
 ]);
 
-test48App.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $translateProvider, RestangularProvider) {
+trackerOwlsApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $translateProvider, RestangularProvider) {
     $urlRouterProvider.otherwise("/");
 
     $stateProvider

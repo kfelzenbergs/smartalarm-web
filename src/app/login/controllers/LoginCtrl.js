@@ -1,4 +1,4 @@
-test48App.controller('LoginCtrl', function (Rest, Auth, $state) {
+trackerOwlsApp.controller('LoginCtrl', function (Rest, Auth, $state) {
     var vm = this;
 
   vm.login_credentails = {

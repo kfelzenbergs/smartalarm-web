@@ -1,4 +1,4 @@
-test48App.factory('Rest', function (Restangular, TokenRestangular, $q) {
+trackerOwlsApp.factory('Rest', function (Restangular, TokenRestangular, $q) {
     var Rest = {};
 
   /**

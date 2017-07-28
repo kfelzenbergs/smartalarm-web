@@ -1,4 +1,4 @@
-test48App.controller('UserHomeCtrl', function (Rest, Auth, User, NgMap) {
+trackerOwlsApp.controller('UserHomeCtrl', function (Rest, Auth, User, NgMap) {
   var vm = this;
 
   NgMap.getMap().then(function(map) {
