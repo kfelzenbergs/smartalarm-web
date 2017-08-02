@@ -56,6 +56,10 @@ trackerOwlsApp.config(function ($stateProvider, $urlRouterProvider, $locationPro
             console.log('API ERROR: status code: ', status);
         }
 
+      if (status == 401) {
+        AuthProvider.$get().logout();
+      }
+
         return true; // error not handled
     });
 
