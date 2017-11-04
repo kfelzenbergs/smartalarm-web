@@ -1,24 +1,94 @@
-<div id="stats_now_labels" class="panel panel-default">
-    <div class="panel-body">
-        <button type="button" class="btn btn-primary">Lat: <span class="badge">{{vm.stats.lat}}</span></button>
-        <button type="button" class="btn btn-primary">Lon: <span class="badge">{{vm.stats.lon}}</span></button>
-        <button type="button" class="btn btn-success">Satellites: <span class="badge">{{vm.stats.satellites}}</span></button>
-        <button type="button" class="btn btn-success">Speed: <span class="badge">{{vm.stats.speed}}</span></button>
-        <button type="button" class="btn btn-danger">Battery Level: <span class="badge">{{vm.stats.bat_level}}</span></button>
-        <button type="button" class="btn btn-danger">Charging: <span class="badge">{{vm.stats.is_charging}}</span></button>
+
+<div id="tracker_favorites">
+        <span ng-repeat="n in vm.trackers track by $index">
+                <button ng-click="vm.setTracker(n.identity)" type="button" class="tracker_favorite"><span >{{n.name}}</span></button>
+        </span>
+</div>
+
+<div id="home_main_container">
+    <div id="map_canvas">
+        <ng-map id="actual_map" zoom="{{vm.map.zoom}}" center="{{vm.map.center.latitude}}, {{vm.map.center.longitude}}">
+            <!-- <marker position="{{vm.map.center.latitude}}, {{vm.map.center.longitude}}"
+                    icon="{{vm.map.icon}}">
+            </marker> -->
+    
+            <custom-marker ng-repeat="cm in vm.trackerArray" position="{{cm.pos.latitude}}, {{cm.pos.longitude}}"
+                on-mouseover="mouseover()" on-mouseout="mouseout()" on-click="vm.trackerInfo()">
+                <div class="{{cm.class}}">
+                    <div>{{cm.data.asset_name}} {{cm.data.asset_reg_nr}}</div> 
+                </div>
+            </custom-marker>
+        </ng-map>
     </div>
-</div>
+    <div id="stats_side_panel">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Asset info</h3>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <span class="badge">{{vm.selectedTrackerData.tracker_id}}</span>
+                        ID
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge">{{vm.selectedTrackerData.tracker_name}}</span>
+                        Tracker
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge">{{vm.selectedTrackerData.asset_name}}</span>
+                        Asset
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge">{{vm.selectedTrackerData.asset_reg_nr}}</span>
+                        Registration nr
+                    </li>
+                </ul>
+            </div>
+        </div>
 
-<div class="panel-body">
-    <span ng-repeat="n in vm.trackers track by $index">
-            <button ng-click="vm.setTracker(n.identity)" type="button" class="btn btn-info">@<span class="badge">{{n.name}}</span></button>
-    </span>
-</div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Trip Stats</h3>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <span class="badge">140km</span>
+                        Distance
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge">62km/h</span>
+                        Average speed
+                    </li>
+                </ul>
+            </div>
+        </div>
 
-<div id="map_canvas">
-    <ng-map id="actual_map" zoom="{{vm.map.zoom}}" center="{{vm.map.center.latitude}}, {{vm.map.center.longitude}}">
-        <marker position="{{vm.map.center.latitude}}, {{vm.map.center.longitude}}"
-                icon="{{vm.map.icon}}">
-        </marker>
-    </ng-map>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Last Address</h3>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <span class="badge"></span>
+                        {{vm.selectedTrackerData.last_known_address}}
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge">{{vm.selectedTrackerData.speed}}km/h</span>
+                        Speed
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge">{{vm.selectedTrackerData.alt}}</span>
+                        Altitude
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge">18.01.2017 13:45:39</span>
+                        Time
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>

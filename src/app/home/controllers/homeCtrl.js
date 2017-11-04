@@ -1,32 +1,59 @@
-trackerOwlsApp.controller('UserHomeCtrl', function (Rest, Auth, User, NgMap) {
+trackerOwlsApp.controller('UserHomeCtrl', function (Rest, Auth, User, NgMap, $interval) {
   var vm = this;
 
   NgMap.getMap().then(function(map) {
-    console.log(map.getCenter());
-    console.log('markers', map.markers);
-    console.log('shapes', map.shapes);
+    // console.log(map.getCenter());
+    // console.log('markers', map.markers);
+    // console.log('shapes', map.shapes);
   });
 
-  vm.stats = {lat: 0, lon: 0, satellites: 0, bat_level: 0, is_charging: 0}
-
-
-  setInterval(function () {
-    fetch();
-  }, 10000);
+  vm.trackerArray = []
+  
+  vm.selectedTrackerData = {
+    asset_name: "",
+    asset_reg_nr: "",
+    last_known_address: ""
+  }
 
   vm.setTracker = function(identity) {
     vm.tracker = identity;
-    fetch();
+    vm.doRequestOnce();
   };
 
-  function fetch(){
-    Rest.getStatsGateway(vm.tracker).then(function(response){
-      vm.stats.lat = response.lat;
-      vm.stats.lon = response.lon;
-      vm.stats.satellites = response.satellites;
-      vm.stats.speed = response.speed;
-      vm.stats.bat_level = response.bat_level;
-      vm.stats.is_charging = response.is_charging;
+  vm.trackerInfo = function() {
+    console.info("show additional trackerInfo");
+  };
+
+  vm.doRequestOnce = function() {
+    Rest.getStatsGateway(vm.tracker).then(function(response){      
+      vm.selectedTrackerData = {
+        tracker_id: response.tracker_id,
+        tracker_name: response.tracker_name,
+        asset_name: response.asset_name,
+        asset_reg_nr: response.asset_reg_nr,
+        last_known_address: response.last_known_address,
+        lat: response.lat,
+        lon: response.lon,
+        satellites: response.satellites,
+        speed: response.speed,
+        bat_level: response.bat_level,
+        is_charging: response.is_charging
+      }
+
+      vm.trackerArray = [];
+      vm.trackerArray.push(
+        {
+          data: {
+            asset_name: response.asset_name,
+            asset_reg_nr: response.asset_reg_nr
+          },
+          pos: {
+            latitude: response.lat,
+            longitude: response.lon
+          },
+          class: "my1"
+        }
+      );
 
       vm.map = {
         center: {
@@ -39,16 +66,34 @@ trackerOwlsApp.controller('UserHomeCtrl', function (Rest, Auth, User, NgMap) {
     },function(error){
       console.info('errrrorrr!')
     })
+  };
 
-  }
+  vm.fetchData = function() {
+    trackerDataFetcher = $interval(function() {
+      if (Auth.isAuthenticated()) {
+        vm.doRequestOnce();
+      }
+      else {
+        vm.stopFetch();
+      }
+    }, 10000);
+
+    vm.stopFetch = function() {
+      console.info("stopping fetch..");
+      if (angular.isDefined(trackerDataFetcher)) {
+        $interval.cancel(trackerDataFetcher);
+        stop = undefined;
+      }
+    }
+  };
 
   (function init() {
     Rest.getTrackers().then(function(response){
       vm.trackers = response;
       vm.tracker = response[0].identity;
-      fetch();
+      vm.doRequestOnce();
+      vm.fetchData();
     })
   })();
 
-  console.info(Auth.getUser().getName())
 });

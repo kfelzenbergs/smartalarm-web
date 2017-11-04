@@ -14,6 +14,6 @@ trackerOwlsApp.service('User',function(){
   };
 
   this.getName = function(){
-    return this.data.first_name + ' ' + this.data.last_name;
+    return this.data.email;
   };
 })

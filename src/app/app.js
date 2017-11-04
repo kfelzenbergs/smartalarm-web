@@ -7,16 +7,21 @@ var trackerOwlsApp = angular.module('trackerOwlsApp', [
   'ngMap'
 ]);
 
-trackerOwlsApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $translateProvider, RestangularProvider) {
+trackerOwlsApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $translateProvider, RestangularProvider, AuthProvider) {
     $urlRouterProvider.otherwise("/");
 
     $stateProvider
-        .state('login', {
-            url: "/",
-            templateUrl: "app/login/templates/login.html",
-            controller: 'LoginCtrl',
-            controllerAs: 'vm'
-        })
+      .state('login', {
+        url: "/",
+        templateUrl: "app/login/templates/login.html",
+        controller: 'LoginCtrl',
+        controllerAs: 'vm'
+      }).state('logout', {
+        url: "/logout/",
+        templateUrl: "app/home/templates/logout.html",
+        controller: 'LogoutCtrl',
+        controllerAs: 'vm'
+      })
       .state('user', {
         abstract: true,
         templateUrl: "app/common/templates/container.html",
@@ -34,12 +39,11 @@ trackerOwlsApp.config(function ($stateProvider, $urlRouterProvider, $locationPro
         controller: 'UserHomeCtrl',
         controllerAs: 'vm'
       }).state('user.past', {
-      url: "/client/past/",
-      templateUrl: "app/home/templates/past.html",
-      controller: 'pastCtrl',
-      controllerAs: 'vm'
-    })
-    ;
+        url: "/client/past/",
+        templateUrl: "app/home/templates/past.html",
+        controller: 'pastCtrl',
+        controllerAs: 'vm'
+    });
 
     // Force browser to use HTML5 URL
     $locationProvider.html5Mode(true);
