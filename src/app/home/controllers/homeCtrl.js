@@ -1,4 +1,4 @@
-trackerOwlsApp.controller('UserHomeCtrl', function (Rest, Auth, User, NgMap, $interval) {
+trackerOwlsApp.controller('UserHomeCtrl', function (Rest, Auth, User, NgMap, $interval, $scope) {
   var vm = this;
 
   NgMap.getMap().then(function(map) {
@@ -71,6 +71,7 @@ trackerOwlsApp.controller('UserHomeCtrl', function (Rest, Auth, User, NgMap, $in
   vm.fetchData = function() {
     trackerDataFetcher = $interval(function() {
       if (Auth.isAuthenticated()) {
+        //console.info($state.current);
         vm.doRequestOnce();
       }
       else {
@@ -79,13 +80,16 @@ trackerOwlsApp.controller('UserHomeCtrl', function (Rest, Auth, User, NgMap, $in
     }, 10000);
 
     vm.stopFetch = function() {
-      console.info("stopping fetch..");
       if (angular.isDefined(trackerDataFetcher)) {
         $interval.cancel(trackerDataFetcher);
         stop = undefined;
       }
     }
   };
+
+  $scope.$on("$destroy", function() {
+    vm.stopFetch();
+  });
 
   (function init() {
     Rest.getTrackers().then(function(response){

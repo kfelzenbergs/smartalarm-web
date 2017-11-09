@@ -1,11 +1,13 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12 text-center">
-            <form name="loginForm" ng-submit="vm.login(loginForm.$valid, vm.login_credentails)" novalidate>
+            <div class="thumbnail"><img src="assets/logo.png"/></div>
+            <form class="login-form" name="loginForm" ng-submit="vm.login(loginForm.$valid, vm.login_credentails)" novalidate>
                 <input
                         ng-model="vm.login_credentails.username"
                         ng-required="true"
                         type="text"
+                        placeholder="{{'USERNAME' | translate}}"
                         name="email"/>
 
 
@@ -13,6 +15,7 @@
                         ng-model="vm.login_credentails.password"
                         ng-required="true"
                         type="password"
+                        placeholder="{{'PASSWORD' | translate}}"
                         label="{{ 'PASSWORD' | translate }}"
                         name="password"/>
 
@@ -25,9 +28,10 @@
                     <span ng-if="!vm.loading">{{ 'LOGIN' | translate }}</span>
                     <span ng-if="vm.loading">{{ 'LOADING' | translate }}</span>
                 </button>
+                <button class="google push-button">{{ 'LOGIN_WITH_GOOGLE' | translate }}</button>
 
                 <div class="forgot-password">
-                    <a ng-click="vm.openForgotPassword()">{{ 'FORGOT_PASSWORD' | translate }}</a>
+                    <p class="message">{{ 'FORGOT_PASSWORD' | translate }} <a ng-click="vm.openForgotPassword()">{{ 'RESET_HERE' | translate }}</a></p>
                 </div>
             </form>
         </div>

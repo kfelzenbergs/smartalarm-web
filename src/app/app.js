@@ -34,14 +34,14 @@ trackerOwlsApp.config(function ($stateProvider, $urlRouterProvider, $locationPro
           }
         }
       }).state('user.home', {
-        url: "/client/now/",
+        url: "/client/live/",
         templateUrl: "app/home/templates/userHome.html",
         controller: 'UserHomeCtrl',
         controllerAs: 'vm'
-      }).state('user.past', {
-        url: "/client/past/",
-        templateUrl: "app/home/templates/past.html",
-        controller: 'pastCtrl',
+      }).state('user.statistics', {
+        url: "/client/statistics/",
+        templateUrl: "app/home/templates/statistics.html",
+        controller: 'statisticsCtrl',
         controllerAs: 'vm'
     });
 
