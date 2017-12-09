@@ -1,10 +1,10 @@
 {
   "development": {
     "env": "dev",
-    "endpoint": "http://10.1.5.59:8000"
+    "endpoint": "https://api.trackerowls.com"
   },
   "production": {
     "env": "prod",
-    "endpoint": ""
+    "endpoint": "https://api.trackerowls.com"
   }
 }

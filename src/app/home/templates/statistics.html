@@ -7,6 +7,13 @@
     </div>
 </div>
 <div class="past_view_main_container">
-    <div id="historical_map"></div>
+    <span ng-repeat="n in vm.trackers track by $index">
+        <div class="historical_map_div">
+            <div>{{n.name}} {{n.description}}</div>
+            <div class="historical_map" id="historical_map{{n.identity}}">no data</div>
+        </div>
+        
+    </span>
+    
     
 </div>

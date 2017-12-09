@@ -1,0 +1,32 @@
+<div class="trips-container">
+    <div class="trips-row1 trips-side-panel">
+        
+        <div class="list-group trips-list">
+            <div class="list-group">
+                <a id="trip-entry-{{$index+1}}" ng-click="vm.selectTrip($index)" href="#{{$index+1}}" class="trip-entry list-group-item" ng-repeat="trip in vm.trips track by $index">
+                    <h4 class="list-group-item-heading">{{trip.updated_at | date:"dd.MM.y HH:mm:ss":"EET"}}</h4>
+                    <p class="list-group-item-text">
+                        <strong>Tracker:</strong> {{trip.tracker}}
+                    </p>
+                    <p class="list-group-item-text">
+                        <strong>Start:</strong> {{trip.address_start}}
+                    </p>
+                    <p class="list-group-item-text">
+                        <strong>End:</strong> {{trip.address_end}}
+                    </p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="trips-row1 trips-map-container">
+        <div class="trips-map">
+            <div id="trips-map">no data</div>
+        </div>
+        <div class="trips-stats-panel">
+            Stats
+        </div>
+    </div>
+</div>
+
+<div class="clear">clear</div>

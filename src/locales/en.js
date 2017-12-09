@@ -6,5 +6,7 @@ var ENGLISH_LOCALES = {
     LOGIN: 'Authorize',
     LOGIN_WITH_GOOGLE: 'Authorize with Google',
     LIVE: 'LIVE',
-    STATISTICS: 'STATISTICS'
+    STATISTICS: 'STATISTICS',
+    TRIPS: 'TRIPS',
+    ZONES: 'ZONES',
 };

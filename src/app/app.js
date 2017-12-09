@@ -21,7 +21,12 @@ trackerOwlsApp.config(function ($stateProvider, $urlRouterProvider, $locationPro
         templateUrl: "app/home/templates/logout.html",
         controller: 'LogoutCtrl',
         controllerAs: 'vm'
-      })
+      }).state('about', {
+      url: "/about/",
+      templateUrl: "app/about/templates/about.html",
+      controller: 'AboutCtrl',
+      controllerAs: 'vm'
+    })
       .state('user', {
         abstract: true,
         templateUrl: "app/common/templates/container.html",
@@ -42,6 +47,26 @@ trackerOwlsApp.config(function ($stateProvider, $urlRouterProvider, $locationPro
         url: "/client/statistics/",
         templateUrl: "app/home/templates/statistics.html",
         controller: 'statisticsCtrl',
+        controllerAs: 'vm'
+      }).state('user.trips', {
+        url: "/client/trips/",
+        templateUrl: "app/home/templates/trips.html",
+        controller: 'tripsCtrl',
+        controllerAs: 'vm'
+      }).state('user.zones', {
+        url: "/client/zones/",
+        templateUrl: "app/home/templates/zones.html",
+        controller: 'zonesCtrl',
+        controllerAs: 'vm'
+      }).state('user.diagnostics', {
+        url: "/client/diagnostics/",
+        templateUrl: "app/home/templates/diagnostics.html",
+        controller: 'diagnosticsCtrl',
+        controllerAs: 'vm'
+      }).state('user.manage', {
+        url: "/client/manage/",
+        templateUrl: "app/home/templates/manage.html",
+        controller: 'manageCtrl',
         controllerAs: 'vm'
     });
 

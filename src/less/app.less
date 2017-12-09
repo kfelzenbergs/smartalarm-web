@@ -8,7 +8,11 @@ html, body {
   margin: 0px;
 }
 
-#switchable_view, #actual_map {
+#switchable-view {
+  height: ~'calc(100% - 100px)';
+}
+
+#actual-map {
   height: 100%;
 }
 
@@ -18,12 +22,11 @@ html, body {
   border-radius:0px;
 }
 
-#map_canvas {
+#live-map-canvas {
   position: relative;
-  width: 77%;
-  height: ~'calc(100% - 114px)';
+  width: 70%;
+  height: 100%;
   float: left;
-  //height: ~'calc(100% - 117px)';
 }
 
 .angular-google-map-container {
@@ -41,17 +44,29 @@ html, body {
 .past_view_main_container {
   width: 100%;
   height: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-#historical_map {
-  width: 77%;
-  height: ~'calc(100% - 114px)';
+.historical_map_div {
+  width: 33%;
+  height: 33%; 
+  margin: 10px;
   float: left;
 }
 
-#stats_side_panel {
-  width: 23%;
+.historical_map {
+  width: 100%;
+  height: 100%;
+}
+
+#stats-side-panel {
+  width: 30%;
   float: right;
+}
+
+.stats-key {
+  width: 100px;
 }
 
 .custom-marker {
@@ -94,11 +109,280 @@ html, body {
   left: 50%;
 }
 
-#home_main_container {
+#home-main-container {
+  width: 100%;
+  height: ~'calc(100% - 21px)';
+}
+
+.tracker_favorite {
+  height: 38px;
+}
+
+.zones-container {
   width: 100%;
   height: 100%;
 }
 
-.tracker_favorite {
+.zones-row1 {
+  float: left;
+}
+
+.zones-side-panel {
+  width: 33%;
+  height: 100%;
+}
+
+.zones-map-container {
+  width: 67%;
+  height: 100%;
+}
+
+.zones-map {
+  width: 100%;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;  
+}
+
+#zones-map {
+  width: 100%;
+  height: 100%;
+}
+
+.zone_entry {
+  // height: 40px;
+  // background-color: red;
+  // margin-bottom: 1px;
+}
+
+.zones-side-panel .list-group {
+  overflow-y: scroll;
+  max-height: ~'calc(100% - 200px)';
+}
+
+.trips-side-panel .list-group {
+  overflow-y: scroll;
+  max-height: 100%;
+}
+
+#new-zone-container {
+
+}
+
+#new-zone {
+  display: none;
+}
+
+#new-zone-name {
+  margin-bottom: 10px;
+  width: 100%;
+  height: 50px;  
+  padding: 5px;
+}
+
+#new-zone-tracker {
+  margin-bottom: 10px;
   height: 50px;
+}
+
+#new-zone-alarm-on {
+  margin-bottom: 10px;
+  height: 50px;
+}
+
+#new-zone-alarm-enabled {
+  margin-bottom: 10px;
+  height: 50px;
+}
+
+#new-zone-save {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+  width: 100%;
+  height: 40px;
+}
+
+.clear {
+  background-color: red;
+  clear: both;
+}
+
+#button-zone-circle {
+  border: 0;
+  width: 50px;
+  height: 50px;
+  background-image: url('/assets/icons8-circle-50.png');
+}
+
+#button-zone-rectangular {
+  border: 0;
+  width: 50px;
+  height: 50px;
+  background-image: url('/assets/icons8-rectangular-50.png');
+}
+
+#button-zone-polygon {
+  border: 0;
+  width: 50px;
+  height: 50px;
+  background-image: url('/assets/icons8-polygon-50.png');
+}
+
+#button-zone-update {
+  border: 1;
+  width: 75px;
+  height: 37px;
+}
+
+#button-zone-delete {
+  width: 75px;
+  height: 37px;
+}
+
+.zones-toolbox {
+  margin: 10px;
+}
+
+.zone-tools-new {
+  float: left;
+  // border-style: solid;
+  // border-width: 1px;
+  vertical-align: middle;
+}
+
+.zone-tools-update {
+  float: right;
+  margin-top: 50px;
+}
+
+.zone-tools-new-buttons {
+  margin: auto;
+  width: 50px;
+}
+
+.zone-tools-update-buttons {
+  margin: auto;
+  width: 75px;
+}
+
+.zone-tool {
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
+
+.zone-label-new p {
+  margin: auto;
+  text-align: center;
+}
+
+.tool-container {
+  width: 100px;
+}
+
+// bootstrap overrides
+.navbar {
+  margin-bottom: 0;
+}
+
+
+a.my-tracker-button {
+  text-decoration: none;
+  color: gray;
+}
+
+a.my-tracker-button:link {
+  text-decoration: none;
+}
+
+a.my-tracker-button:hover {
+  text-decoration: none;
+}
+
+.my-tracker-button-logo {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  background-image: url('/assets/icons8-owl-50.png');
+}
+
+
+
+// trips
+
+.trips-container {
+  width: 100%;
+  height: 100%;
+}
+
+.trips-row1 {
+  float: left;
+}
+
+.trips-side-panel {
+  width: 33%;
+  height: 100%;
+}
+
+.trips-map-container {
+  width: 67%;
+  height: 100%;
+}
+
+.trips-map {
+  width: 100%;
+  height: 80%;
+  margin-left: auto;
+  margin-right: auto;  
+}
+
+.trips-stats-panel {
+  height: 20%;
+}
+
+#trips-map {
+  width: 100%;
+  height: 100%;
+}
+
+
+// diagnostics
+.diag-key-date {
+  width: 15%;
+}
+
+.diag-key-module {
+  width: 15%;
+}
+
+.diag-key-error-code {
+  width: 15%;
+}
+
+.diag-key-description {
+  width: 55%;
+}
+
+.loading-spinner {
+  position: fixed;
+  z-index: 999;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 256px;
+  height: 256px;
+  background-image: url('/assets/lg.double-ring-spinner.gif');
+}
+
+.overlay {
+  background: #e9e9e9;
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0.5;
 }

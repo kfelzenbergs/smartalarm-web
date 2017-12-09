@@ -1,0 +1,65 @@
+<div class="zones-container">
+    <div class="zones-row1 zones-side-panel">
+        <div class="zones-toolbox">
+            <div class="tool-container zone-tools-new">
+                <div class="zone-tools-new-buttons">
+                    <button id="button-zone-circle" ng-click="vm.newZone(1)"></button>
+                    <button id="button-zone-rectangular" ng-click="vm.newZone(2)"></button>
+                    <button id="button-zone-polygon" ng-click="vm.newZone(3)"></button>
+                </div>
+                <div class="zone-label-new">
+                    <p>New zone</p>
+                </div>
+            </div>
+            <div class="tool-container zone-tools-update">
+                <div class="zone-tools-update-buttons">
+                    <button ng-disabled="vm.zoneToolsDisabled" class="zone-tool btn-success" id="button-zone-update" ng-click="vm.updateZone()">Update</button>
+                    <button ng-disabled="vm.zoneToolsDisabled" class="zone-tool btn-danger" id="button-zone-delete" ng-click="vm.deleteZone()" confirm-dialog="Are you Sure?"></button>
+                </div>     
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="list-group zones-list">
+            <div class="list-group">
+                <div id="new-zone-container">
+                    <a href="#" id="new-zone" class="list-group-item">
+                        <h4 class="list-group-item-heading"><input type="text" id="new-zone-name" value="New Zone"></h4>
+                        <p class="list-group-item-text">Tracker: 
+                            <select id="new-zone-tracker">
+                                <option ng-repeat="tracker in vm.trackers" value="{{tracker.identity}}">{{tracker.name}}</option>
+                            </select>
+                        </p>
+                        <div>
+                            Alarm On:
+                            <select id="new-zone-alarm-on">
+                                <option value="1">exit</option>
+                                <option value="2">enter</option>
+                            </select>
+                            Enabled:
+                            <select id="new-zone-alarm-enabled">
+                                <option value="false">disabled</option>
+                                <option value="true">enabled</option>
+                            </select>
+                        </div>
+                        <button id="new-zone-save" class="btn-success" ng-click="vm.saveZone()">Save</button>
+                    </a> 
+                </div>
+                
+                <a id="zone-entry-{{$index+1}}" ng-click="vm.selectZone($index)" href="#{{$index+1}}" class="zone-entry list-group-item" ng-repeat="zone in vm.zones track by $index">
+                    <h4 class="list-group-item-heading">{{zone.name}}</h4>
+                    <p class="list-group-item-text">
+                        <strong>Tracker:</strong> {{zone.tracker}}
+                        <strong>Zone Type:</strong> {{vm.zoneTypeFriendly(zone.zone_type)}}
+                    </p>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="zones-row1 zones-map-container">
+            <div class="zones-map">
+                <div id="zones-map">no data</div>
+            </div>
+    </div>
+</div>
+
+<div class="clear">clear</div>

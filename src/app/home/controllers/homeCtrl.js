@@ -1,11 +1,6 @@
-trackerOwlsApp.controller('UserHomeCtrl', function (Rest, Auth, User, NgMap, $interval, $scope) {
+trackerOwlsApp.controller('UserHomeCtrl', function (Rest, Auth, User, NgMap, $interval, $scope, $location) {
   var vm = this;
-
-  NgMap.getMap().then(function(map) {
-    // console.log(map.getCenter());
-    // console.log('markers', map.markers);
-    // console.log('shapes', map.shapes);
-  });
+  var numbers = new RegExp(/^[0-9]+$/);
 
   vm.trackerArray = []
   
@@ -16,6 +11,7 @@ trackerOwlsApp.controller('UserHomeCtrl', function (Rest, Auth, User, NgMap, $in
   }
 
   vm.setTracker = function(identity) {
+    $(".overlay").show();
     vm.tracker = identity;
     vm.doRequestOnce();
   };
@@ -25,19 +21,22 @@ trackerOwlsApp.controller('UserHomeCtrl', function (Rest, Auth, User, NgMap, $in
   };
 
   vm.doRequestOnce = function() {
-    Rest.getStatsGateway(vm.tracker).then(function(response){      
+    Rest.getStatsGateway(vm.tracker).then(function(response){
+      $(".overlay").hide();      
       vm.selectedTrackerData = {
         tracker_id: response.tracker_id,
         tracker_name: response.tracker_name,
         asset_name: response.asset_name,
         asset_reg_nr: response.asset_reg_nr,
         last_known_address: response.last_known_address,
+        last_time_updated: response.last_time_updated,
         lat: response.lat,
         lon: response.lon,
         satellites: response.satellites,
         speed: response.speed,
         bat_level: response.bat_level,
-        is_charging: response.is_charging
+        car_running: response.car_running,
+        last_trip: response.last_trip
       }
 
       vm.trackerArray = [];
@@ -92,12 +91,29 @@ trackerOwlsApp.controller('UserHomeCtrl', function (Rest, Auth, User, NgMap, $in
   });
 
   (function init() {
+    NgMap.getMap('actual-map').then(function(map) {
+    }).catch(function(map){
+        console.error('map error: ', map);
+    });
+
     Rest.getTrackers().then(function(response){
       vm.trackers = response;
-      vm.tracker = response[0].identity;
+
+      // get data for one tracker
+      if (numbers.test($location.hash())) {
+        vm.tracker = vm.trackers[$location.hash()-1].identity
+      }
+      else {
+        vm.tracker = response[0].identity;
+      }
+      $(".overlay").show();
       vm.doRequestOnce();
       vm.fetchData();
     })
   })();
 
 });
+
+trackerOwlsApp.config(['$qProvider', function ($qProvider) {
+  $qProvider.errorOnUnhandledRejections(false);
+}]);

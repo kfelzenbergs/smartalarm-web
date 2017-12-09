@@ -45,6 +45,69 @@ trackerOwlsApp.factory('Rest', function (Restangular, TokenRestangular, $q) {
     });
   };
 
+  Rest.getTrips = function () {
+    return $q(function (resolve, reject) {
+      return TokenRestangular.one('trips/').get().then(function (user) {
+        resolve(user.plain());
+      }, function (error) {
+        reject(error);
+      });
+    });
+  };
+
+  Rest.getTripStats = function (trip) {
+    return $q(function (resolve, reject) {
+      return TokenRestangular.one('tripstats/?trip=' + trip).get().then(function (user) {
+        resolve(user.plain());
+      }, function (error) {
+        reject(error);
+      });
+    });
+  };
+
+  Rest.getZones = function () {
+    return $q(function (resolve, reject) {
+      return TokenRestangular.one('zones/').get().then(function (user) {
+        resolve(user.plain());
+      }, function (error) {
+        reject(error);
+      });
+    });
+  };
+
+  Rest.patchZone = function (zone) {
+    return $q(function (resolve, reject) {
+      TokenRestangular.one('zones/').patch(zone).then(function (zone_data) {
+        resolve(zone_data.plain());
+      }, function (error) {
+        reject(error.data);
+      });
+    });
+  };
+
+  Rest.saveZone = function (zone) {
+    console.info("saveZone:");
+    console.info(zone);
+    return $q(function (resolve, reject) {
+      TokenRestangular.all('zones/').post(zone).then(function (zone_data) {
+        console.log("zone saved!");
+        console.log(zone_data.plain());
+        resolve(zone_data.plain());
+      }, function (error) {
+        reject(error.data);
+      });
+    });
+  };
+
+  Rest.deleteZone = function (zone_id) {
+    return $q(function (resolve, reject) {
+      TokenRestangular.all('zones/?id=' + zone_id).remove().then(function (response) {
+        resolve(true);
+      }, function (error) {
+        reject(error.data);
+      });
+    });
+  };
 
   Rest.loginUser = function(email, password) {
     return $q(function (resolve, reject) {
